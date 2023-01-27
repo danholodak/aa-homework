@@ -54,3 +54,22 @@ end
 # p  reverse("q") # => "q"
 # p  reverse("id") # => "di"
 # p  reverse("") # => ""
+class Array
+
+  def my_inject(acc=nil, &prc)
+      if acc != nil
+        self.my_each do |ele|
+          acc = prc.call(acc, ele)
+        end
+      else
+        acc = self[0]
+        i = 1
+        until i = self.length
+          acc = prc.call(acc, self[i])
+          i +=1
+        end
+      end
+      acc
+  end
+
+end
