@@ -51,7 +51,7 @@ class Board
   def next_turn(ending_cup_idx)
 
     current = @cups[ending_cup_idx]
-    if ending_cup_idx != 6 && ending_cup_idx != 13 && !current.empty?
+    if ending_cup_idx != 6 && ending_cup_idx != 13 && current.length != 1
       return ending_cup_idx
     elsif ending_cup_idx != 6 && ending_cup_idx != 13 && current.length == 1
       return :switch
@@ -70,7 +70,7 @@ class Board
   end
 
   def one_side_empty?
-    cups[0..6].all?{|cup| cup.empty?} || cups[8..13].all? {|cup| cup.empty?} 
+    cups[0..5].all?{|cup| cup.empty?} || cups[7..12].all? {|cup| cup.empty?} 
   end
 
   def winner
