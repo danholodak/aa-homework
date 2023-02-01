@@ -12,23 +12,28 @@ class Simon
   end
 
   def play
-    until @game_over == true
+    until @game_over
       take_turn
     end
-    game_over_message
+    self.game_over_message
     reset_game
   end
 
   def take_turn
     show_sequence
-    require_sequence
-    @sequence_length +=1
-    round_success_message
+    if require_sequence == false
+      @game_over = true 
+    else
+      @sequence_length +=1
+      round_success_message
+    end
   end
 
   def show_sequence
     add_random_color
     puts seq.join" "
+    sleep(2)
+    system("clear")
   end
 
   def require_sequence
@@ -38,11 +43,11 @@ class Simon
     puts "repeat color #{i}"
     comparison << gets.chomp
     if comparison[i-1] != seq[i-1]
-      game_over = true
-      return
+      return false
     end
     i +=1
     end
+    return true
   end
 
   def add_random_color
