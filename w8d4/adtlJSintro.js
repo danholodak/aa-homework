@@ -1,6 +1,6 @@
 titleize = function(names, callback){
     let array = names.map(function(ele){
-        "Mx. " + ele + " Jingleheimer Schmidt";
+        return "Mx. " + ele + " Jingleheimer Schmidt";
     });
     console.log(array)
     callback(array);
@@ -34,6 +34,14 @@ Elephant.prototype.addTrick= function(trick){
 }
 
 Elephant.prototype.play = function (){
-
-    this.tricks[getRandomInt(tricks.length)]
+    return this.tricks[getRandomInt(tricks.length)]
 }
+
+
+let ellie = new Elephant("Ellie", 185, ["giving human friends a ride", "playing hide and seek"]);
+let charlie = new Elephant("Charlie", 200, ["painting pictures", "spraying water for a slip and slide"]);
+let kate = new Elephant("Kate", 234, ["writing letters", "stealing peanuts"]);
+let micah = new Elephant("Micah", 143, ["trotting", "playing tic tac toe", "doing elephant ballet"]);
+
+let herd = [ellie, charlie, kate, micah];
+
